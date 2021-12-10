@@ -8,6 +8,8 @@
 - identify the target audience
 - explain how a member of the target audience will use it
 
+
+
 # Features
 Develop a list of features that will be included in the application. It must include:
 - at least THREE features
@@ -30,6 +32,7 @@ Develop a diagram which describes the control flow of your application. Your dia
 # Project Management (Trello)
 https://trello.com/b/Qp1PHQ80/terminal-application 
 
+
 Develop an implementation plan which:
 - outlines how each feature will be implemented and a checklist of tasks for each feature
 - prioritise the implementation of different features, or checklist items within a feature
@@ -49,5 +52,12 @@ You must include:
 - any dependencies required by the application to operate
 - any system/hardware requirements
 
+Gem Rmagick - If you incur the error, use the below code as a fix  - 
+
+"An error occurred while installing rmagick (2.15.0), and Bundler cannot continue." 
+
+Fix
+brew unlink imagemagick     
+brew install imagemagick@6 && brew link imagemagick@6 --force
 
 
