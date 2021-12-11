@@ -1,7 +1,10 @@
-require 'colorize'
-require 'rainbow'
+require "colorize"
+require "rainbow"
+require "down"
+require "fileutils"
 
 #Welcome Message
+
 
 puts "Welcome Message"
 
@@ -22,20 +25,26 @@ def goal_list
             puts "Energy is important ect ect"
     else
             puts "that's not a valid number, please add a number only"
-    
     end
 end
 
 goal_list
-sleep(2)
 
 
-print "Thanks for that! What is your current weight?"
-def person_weight
-weight = gets.chomp.to_i
-end
+puts "Thanks for that! Now we are going to calculate your Body Mass Index, this is calculated off your height and weight"
 
-person_weight
+#Calculate BMI HERE
+
+print "Enter you height (m): "
+height = gets.to_f
+
+print "Enter you weight (kgs): "
+kegs = gets.to_f
+
+yourbmi = kegs / height
+print "Your BMI is #{yourbmi} this means you are #{bmi_weight}\n"
+
+#Calculate Fitness level
 
 puts "Great work! Now how would you describe your fitness level?"
 
@@ -53,21 +62,25 @@ elsif fitness == 2
 elsif fitness == 3
         puts "Energy is important ect ect"
 else
-        puts "that's not a valid number, please add a number only"
-        return
+        puts "That's not a valid number, please add a number only"
 
 end
 end
 
 fitness_level
 
-
+#Final output/outcome - Calculates a solution based of the answers given. 
 def print_out
-if goal = 1 && weight <= 40
-    puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals."
+if goal = 1 && fitness = 1
+    puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals. I have added a list of support lines "
+    tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
+    FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
-elsif goal == 1 && weight => 41
-    puts "Second fitness option" 
+elsif goal == 1 && fitness = 2
+    puts "Second fitness option, your file will download soon" 
+    tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
+    FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
+
 
 else 
     puts "There is an error with your options, go back and try again"
@@ -76,4 +89,4 @@ end
 
 print_out
 
-
+exit
