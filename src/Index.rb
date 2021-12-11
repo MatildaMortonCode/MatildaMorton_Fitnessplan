@@ -6,11 +6,11 @@ require "fileutils"
 #Welcome Message
 
 
-puts "Welcome Message"
+puts "ADD - Welcome Message"
 
 puts "Are you ready to take on the BodyFit challenge for 2022. To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
 
-
+sleep (1)    
  
     def menu_option
         puts "1. Loose Weight"
@@ -50,6 +50,7 @@ puts "Thanks for that! Now we are going to calculate your Body Mass Index, this 
 
 #Calculate BMI HERE
 
+def body_index
 print "Enter you height (cm): "
 height = gets.to_f
 
@@ -59,6 +60,10 @@ kegs = gets.to_f
 cm_to_m = height / 100
 yourbmi = kegs / cm_to_m
 print "Your BMI is #{yourbmi} this means you are ADD BMI WEIGHT HERE\n"
+
+end
+
+#Else if BMI is above or below here and add to the scoring - e.g
 
 #Calculate Fitness level
 
