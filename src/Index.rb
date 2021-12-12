@@ -44,26 +44,69 @@ puts "Loosing weight something something"
 end
 end
 
-    
+#system "clear"
+
 
 puts "Thanks for that! Now we are going to calculate your Body Mass Index, this is calculated off your height and weight"
 
+puts "It is useful to consider BMI alongside waist circumference, as waist measurement helps to assess risk by measuring the amount of fat carried around your middle.
+
+BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition."
+
 #Calculate BMI HERE
 
-def body_index
+puts "Were you at born as female, answer yes or no"
+gender = gets.chomp.to_s
+
+b = 0
+while b == 0
+
 print "Enter you height (cm): "
-height = gets.to_f
+height = gets.to_i
 
 print "Enter you weight (kgs): "
-kegs = gets.to_f
+kegs = gets.to_i
 
 cm_to_m = height / 100
 yourbmi = kegs / cm_to_m
-print "Your BMI is #{yourbmi} this means you are ADD BMI WEIGHT HERE\n"
 
+if yourbmi <= 20 && gender == "female"
+print "Your BMI is #{yourbmi} this means you are weight class 1\n"
+b = 1
+
+elsif yourbmi == 21..30 && gender == "female"
+print "Your BMI is #{yourbmi} this means you are weight class 2 \n"
+b = 1
+
+elsif yourbmi == 31..35 && gender == "female"
+print "Your BMI is #{yourbmi} this means you are weight class 3 \n"
+b = 1
+
+elsif yourbmi >= 35 && gender == "female"
+print "Your BMI is #{yourbmi} this means you are weight class 4 \n"
+b = 1
+
+elsif yourbmi <= 20 && gender == "male"
+print "Your BMI is #{yourbmi} this means you are weight class 5 \n"
+b = 1
+
+elsif yourbmi == 21..30 && gender == "male"
+print "Your BMI is #{yourbmi} this means you are weight class 6 \n"
+b = 1
+
+elsif yourbmi == 31..35 && gender == "male"
+print "Your BMI is #{yourbmi} this means you are weight class 7 \n"
+b = 1
+
+elsif yourbmi >= 35 && gender == "male"
+print "Your BMI is #{yourbmi} this means you are weight class 8 \n"
+b = 1
+
+else
+    puts "Error"
+
+end 
 end
-
-#Else if BMI is above or below here and add to the scoring - e.g
 
 #Calculate Fitness level
 
