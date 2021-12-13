@@ -32,11 +32,11 @@ puts "Loosing weight something something"
 
         elsif  goal == 2        
                 puts "Let's get strong together!"
-                a = 2
+                a = 1
         
         elsif goal == 3
                 puts "Energy is important ect ect" 
-                a = 3  
+                a = 1 
         else
                 puts "invalid"
                 a = 0
@@ -55,11 +55,10 @@ BMI is a useful measurement for most people over 18 years old. But it is only an
 
 #Calculate BMI HERE
 
-puts "Were you at born as female, answer yes or no"
-gender = gets.chomp.to_s
-
 b = 0
 while b == 0
+puts "Were you at born as female, answer yes or no"
+gender = gets.chomp.to_s.downcase
 
 print "Enter you height (cm): "
 height = gets.to_i
@@ -70,37 +69,37 @@ kegs = gets.to_i
 cm_to_m = height / 100
 yourbmi = kegs / cm_to_m
 
-if yourbmi <= 20 && gender == "female"
+if yourbmi <= 18.5 && gender == "female"
 print "Your BMI is #{yourbmi} this means you are weight class 1\n"
 b = 1
 
-elsif yourbmi == 21..30 && gender == "female"
+elsif yourbmi == 18.6..24.9 && gender == "female"
 print "Your BMI is #{yourbmi} this means you are weight class 2 \n"
-b = 1
+b = 2
 
-elsif yourbmi == 31..35 && gender == "female"
+elsif yourbmi == 25..29.9 && gender == "female"
 print "Your BMI is #{yourbmi} this means you are weight class 3 \n"
-b = 1
+b = 3
 
-elsif yourbmi >= 35 && gender == "female"
+elsif yourbmi >= 31 && gender == "female"
 print "Your BMI is #{yourbmi} this means you are weight class 4 \n"
-b = 1
+b = 4
 
-elsif yourbmi <= 20 && gender == "male"
+elsif yourbmi <= 18.5 && gender == "male"
 print "Your BMI is #{yourbmi} this means you are weight class 5 \n"
-b = 1
+b = 5
 
-elsif yourbmi == 21..30 && gender == "male"
+elsif yourbmi == 18.6..24.9 && gender == "male"
 print "Your BMI is #{yourbmi} this means you are weight class 6 \n"
-b = 1
+b = 6
 
-elsif yourbmi == 31..35 && gender == "male"
+elsif yourbmi == 25..29.9 && gender == "male"
 print "Your BMI is #{yourbmi} this means you are weight class 7 \n"
-b = 1
+b = 7
 
-elsif yourbmi >= 35 && gender == "male"
+elsif yourbmi >= 30 && gender == "male"
 print "Your BMI is #{yourbmi} this means you are weight class 8 \n"
-b = 1
+b = 8
 
 else
     puts "Error"
@@ -108,11 +107,15 @@ else
 end 
 end
 
+final_number = 
+
+
 #Calculate Fitness level
 
 puts "Great work! Now how would you describe your fitness level?"
 
-
+f = 0
+while f = 0 
 def fitness_level
     puts "1. Low"
     puts "2. Medium"
@@ -121,21 +124,116 @@ def fitness_level
 
 if fitness == 1   
         puts "Loosing weight something something"
+        f = 1
 elsif fitness == 2
         puts "Let's get strong together!"
+        f = 2
 elsif fitness == 3
         puts "Energy is important ect ect"
+        f = 3
 else
         puts "That's not a valid number, please add a number only"
+        f = 0
 
 end
 end
 
-fitness_level
+fitness_level = 0
 
+#NUMBERS FOR FEMALES
+#If they are female underwieght and have a low fitness level
+if b = 1 && f = 1
+        fitness_level = 1
+
+ #If they are female underwieght and have a low fitness level       
+elsif b = 1 && f = 2
+        fitness_level = 2
+
+#If they are female underwieght and have a low fitness level
+elsif b = 1 && f = 3
+        fitness_level = 3  
+
+#If they are female healthy weight and have a low fitness level
+elsif b = 2 && f = 1
+        fitness_level = 4
+#if they are female healthy weight and have a medium fitness level
+elsif b = 2 && f = 2
+        fitness_level = 5
+#if they are female healthy weight and have a high fitness level
+elsif b = 2 && f = 3
+        fitness_level = 6
+
+#if they are female overweight and have a low fitness level
+elsif b = 3 && f = 1
+        fitness_level = 7
+#If they are female overweight and have a medium fitness level
+elsif b = 3 && f = 2
+        fitness_level = 8    
+#If they are female overweight and have a high fitness level
+elsif b = 3 && f = 3
+        fitness_level = 9
+        #if they are female obese and have a low fitness level
+elsif b = 4 && f = 1
+        fitness_level = 10
+#If they are female obese and have a medium fitness level
+elsif b = 4 && f = 2
+        fitness_level = 11  
+#If they are female obese and have a high fitness level
+elsif b = 4 && f = 3
+        fitness_level = 12
+
+
+
+#NUMBERS FOR MALES
+#If they are male underwieght and have a low fitness level
+if b = 5 && f = 1
+        fitness_level = 13
+
+ #If they are male underwieght and have a low fitness level       
+elsif b = 5 && f = 2
+        fitness_level = 14
+
+#If they are male underwieght and have a low fitness level
+elsif b = 5 && f = 3
+        fitness_level = 15  
+
+#If they are male medium weight and have a low fitness level
+elsif b = 6 && f = 1
+        fitness_level = 16
+
+#if they are male medium weight and have a medium fitness level
+elsif b = 6 && f = 2
+        fitness_level = 17
+
+#if they are male medium weight and have a high fitness level
+elsif b = 6 && f = 3
+        fitness_level = 18
+
+#if they are male overweight and have a low fitness level
+elsif b = 7 && f = 1
+        fitness_level = 19
+#If they are male overweight and have a medium fitness level
+elsif b = 7 && f = 2
+        fitness_level = 20     
+#If they are male overweight and have a high fitness level
+elsif b = 7 && f = 3
+        fitness_level = 21
+
+#if they are male obese and have a low fitness level
+elsif b = 8 && f = 1
+        fitness_level = 22
+#If they are male obese and have a medium fitness level
+elsif b = 8 && f = 2
+        fitness_level = 23    
+#If they are male obese and have a high fitness level
+elsif b = 8 && f = 3
+        fitness_level = 24
+
+
+puts fitness_level
 #Final output/outcome - Calculates a solution based of the answers given. 
 def print_out
-if goal = 1 && fitness = 1
+if goal = 1 && fitness_level = 1
     puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals. I have added a list of support lines "
     tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
