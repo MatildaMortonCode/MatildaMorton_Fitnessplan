@@ -3,7 +3,7 @@ require "rainbow"
 require "down"
 require "fileutils"
 require "mail"
-require_relative ".conditional.rb"
+
 
 
 
@@ -120,7 +120,7 @@ end
 puts "Great work! Now how would you describe your fitness level?"
 
 f = 0
-while f = 0 
+while f == 0 
 def fitness_level
     puts "1. Low"
     puts "2. Medium"
@@ -138,13 +138,14 @@ elsif fitness == 2
 elsif fitness == 3
         puts "Energy is important ect ect"
         f = 3
-        fitness = high
+        fitness = "high"
 else
         puts "That's not a valid number, please add a number only"
         f = 0
 
 end
 end
+end             
 
 
 def final_confirmation
@@ -157,6 +158,7 @@ def final_confirmation
         else answer = no 
                 "well you messed up, let's try again"
         end
+end
 
 #COME BACK TO THIS ONCE ANSWER FROM JAIRO
 
@@ -209,7 +211,7 @@ elsif b = 4 && f = 3
 
 #NUMBERS FOR MALES
 #If they are male underwieght and have a low fitness level
-if b = 5 && f = 1
+elsif b = 5 && f = 1
         fitness_level = 13
 
  #If they are male underwieght and have a low fitness level       
@@ -252,6 +254,7 @@ elsif b = 8 && f = 2
 else b = 8 && f = 3
         fitness_level = 24
 end
+
 
 
 puts fitness_level
