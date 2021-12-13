@@ -2,6 +2,7 @@ require "colorize"
 require "rainbow"
 require "down"
 require "fileutils"
+require "mail"
 
 #Welcome Message
 
@@ -18,9 +19,9 @@ sleep (1)
         puts "3. Increase energy"
         end
 
-a = 0
+g = 0
 
-while a == 0
+while g == 0
 menu_option
 print "Enter your goal using 1, 2 or 3: "   
 goal = gets.chomp.to_i
@@ -28,18 +29,18 @@ goal = gets.chomp.to_i
 
 if goal == 1   
 puts "Loosing weight something something"
-                a = 1
+                g = 1
 
         elsif  goal == 2        
                 puts "Let's get strong together!"
-                a = 1
+                g = 1
         
         elsif goal == 3
                 puts "Energy is important ect ect" 
-                a = 1 
+                g = 1 
         else
                 puts "invalid"
-                a = 0
+                g = 0
 
 end
 end
@@ -238,7 +239,7 @@ if goal = 1 && fitness_level = 1
     tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
-elsif goal == 1 && fitness == 2
+elsif goal == 1 && fitness_level == 2
     puts "Second fitness option, your file will download soon" 
     tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
