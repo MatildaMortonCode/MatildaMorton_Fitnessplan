@@ -4,8 +4,9 @@ require "down"
 require "fileutils"
 require "mail"
 require_relative ".conditional.rb"
-require "rmagick"
-include Magick 
+
+
+
 #Welcome Message
 
 
@@ -32,13 +33,16 @@ goal = gets.chomp.to_i
 if goal == 1   
 puts "Loosing weight something something"
                 g = 1
+                goal = "Loose Weight"
 
         elsif  goal == 2        
                 puts "Let's get strong together!"
                 g = 1
+                goal = "Build Muscle"
         
         elsif goal == 3
                 puts "Energy is important ect ect" 
+                goal = "Increase Energy"
                 g = 1 
         else
                 puts "invalid"
@@ -128,12 +132,15 @@ def fitness_level
 if fitness == 1   
         puts "Loosing weight something something"
         f = 1
+        fitness = "low"
 elsif fitness == 2
         puts "Let's get strong together!"
         f = 2
+        fitness = "medium"
 elsif fitness == 3
         puts "Energy is important ect ect"
         f = 3
+        fitness = high
 else
         puts "That's not a valid number, please add a number only"
         f = 0
@@ -142,7 +149,16 @@ end
 end
 
 
+def final_confirmation
+        puts "The final outcome of your selection is that you want to #{goal}, your current BMI is #{yourbmi}. You said your fitness level is #{fitness}. Are these selections correct?"
 
+        answer = gets.chomp
+        
+        if answer = yes
+                puts"great!"
+        else answer = no 
+                "well you messed up, let's try again"
+        end
 
 #COME BACK TO THIS ONCE ANSWER FROM JAIRO
 

@@ -61,3 +61,10 @@ brew unlink imagemagick
 brew install imagemagick@6 && brew link imagemagick@6 --force
 
 
+# Issues loading image (homebrew required)
+
+brew uninstall imagemagick
+gem uninstall rmagick
+bundle add json
+brew install libmagick9-dev
+bundle install
