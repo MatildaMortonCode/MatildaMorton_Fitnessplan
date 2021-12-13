@@ -11,10 +11,11 @@ require "mail"
 
 
 puts "ADD - Welcome Message"
+puts "" 
 
 puts "Are you ready to take on the BodyFit challenge for 2022. To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
 
-sleep (1)    
+puts "" 
  
     def menu_option
         puts "1. Loose Weight"
@@ -121,31 +122,29 @@ puts "Great work! Now how would you describe your fitness level?"
 
 f = 0
 while f == 0 
-def fitness_level
     puts "1. Low"
     puts "2. Medium"
     puts "3. High"
     fitness = gets.chomp.to_i
 
 if fitness == 1   
-        puts "Loosing weight something something"
+        puts "You are super lazy"
         f = 1
-        fitness = "low"
+        #fitness = "low"
 elsif fitness == 2
-        puts "Let's get strong together!"
+        puts "Atleast you do something"
         f = 2
-        fitness = "medium"
+        #fitness = "medium"
 elsif fitness == 3
-        puts "Energy is important ect ect"
+        puts "Wow! Great work"
         f = 3
-        fitness = "high"
+        #fitness = "high"
 else
         puts "That's not a valid number, please add a number only"
         f = 0
 
 end
-end
-end             
+end         
 
 
 def final_confirmation
@@ -259,8 +258,8 @@ end
 
 puts fitness_level
 #Final output/outcome - Calculates a solution based of the answers given. 
-def print_out
-if goal = 1 && fitness_level = 1
+
+if goal == 1 && fitness_level == 1
     puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals. I have added a list of support lines "
     tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
@@ -274,8 +273,6 @@ elsif goal == 1 && fitness_level == 2
 else 
     puts "There is an error with your options, go back and try again"
 end   
-end
 
-print_out
 
 exit
