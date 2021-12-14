@@ -37,20 +37,19 @@ prompt.select("To get started, we are going to need to get some details from you
 
 case 
 when menu = "Loose_Weight" 
-puts "Loosing weight something something"
+  puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!"
                 goal_type = "Loose Weight"
                 goal = 1
 
 when  menu = "Build_muscle"       
-                puts "Let's get strong together!"
-                goal_type = "Build Muscle"
-                goal = 2
+  puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!"
+  goal_type = "Build Muscle"
+  goal = 2
         
 when menu = "Increase_energy" 
-                puts "Energy is important ect ect" 
-                goal_type = "Increase Energy"
-                goal = 3
-end
+  puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me!" 
+  goal_type = "Increase Energy"
+  goal = 3
 end
 
 #system "clear"
@@ -60,13 +59,13 @@ puts "Thanks for that! Now we are going to calculate your Body Mass Index, this 
 
 puts "It is useful to consider BMI alongside waist circumference, as waist measurement helps to assess risk by measuring the amount of fat carried around your middle.
 
-BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition."
+BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition. Like we mentioned earlier, don't get too focused on BMI ro the scales when starting and take lots of before and afters, this just helps us to create a custom plan for you! We will also take into consideration your current excercise levels."
 
 #Calculate BMI HERE
 
 b = 0
 while b == 0
-puts "Were you at born as female, answer yes or no"
+puts "Were you at born as Female or Male? Enter Female or Male: "
 gender = gets.chomp.to_s.downcase
 
 print "Enter you height (cm): "
@@ -79,39 +78,39 @@ cm_to_m = height / 100
 yourbmi = kegs / cm_to_m
 
 if yourbmi <= 18.5 && gender == "female"
-print "Your BMI is #{yourbmi} this means you are weight class 1\n"
+print "Your BMI is #{yourbmi}\n"
 b = 1
 
 elsif yourbmi == 18.6..24.9 && gender == "female"
-print "Your BMI is #{yourbmi} this means you are weight class 2 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 2
 
 elsif yourbmi == 25..29.9 && gender == "female"
-print "Your BMI is #{yourbmi} this means you are weight class 3 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 3
 
 elsif yourbmi >= 31 && gender == "female"
-print "Your BMI is #{yourbmi} this means you are weight class 4 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 4
 
 elsif yourbmi <= 18.5 && gender == "male"
-print "Your BMI is #{yourbmi} this means you are weight class 5 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 5
 
 elsif yourbmi == 18.6..24.9 && gender == "male"
-print "Your BMI is #{yourbmi} this means you are weight class 6 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 6
 
 elsif yourbmi == 25..29.9 && gender == "male"
-print "Your BMI is #{yourbmi} this means you are weight class 7 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 7
 
 elsif yourbmi >= 30 && gender == "male"
-print "Your BMI is #{yourbmi} this means you are weight class 8 \n"
+print "Your BMI is #{yourbmi}\n"
 b = 8
 
 else
-    puts "Error"
+    puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you check the instructions on each input"
 
 end 
 end
