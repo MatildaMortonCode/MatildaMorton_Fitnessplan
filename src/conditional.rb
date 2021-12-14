@@ -1,7 +1,6 @@
 
 require_relative ".index.rb"
 
-
 fitness_level = 0
 
 #NUMBERS FOR FEMALES
@@ -50,7 +49,7 @@ elsif b = 4 && f = 3
 
 #NUMBERS FOR MALES
 #If they are male underwieght and have a low fitness level
-if b = 5 && f = 1
+elsif b = 5 && f = 1
         fitness_level = 13
 
  #If they are male underwieght and have a low fitness level       
