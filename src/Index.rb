@@ -259,6 +259,8 @@ end
 puts fitness_level
 #Final output/outcome - Calculates a solution based of the answers given. 
 
+# For real program, the download link would be different per else if - for assessment purposes, they are only different per goal selected. 
+
 #If user selected loose weight - Refer to conditional.rb for fitness_level number system
 if goal == 1 && fitness_level == 1
     puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals. I have added a list of support lines "
@@ -359,7 +361,7 @@ elsif goal == 1 && fitness_level == 24
         tempfile = Down.download("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
-#If user selected Gain muscle
+#If user selected Gain muscle 
 
 elsif goal == 2 && fitness_level == 1
         puts "Second fitness option, your file will download soon" 
