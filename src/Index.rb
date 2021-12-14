@@ -6,7 +6,7 @@ require "mail"
 require "tty-prompt"
 require_relative ("artmessages")
 
-
+prompt = TTY::Prompt.new
 
 #Welcome Message
 logo
@@ -25,39 +25,34 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?")
 
 sleep (1)
 
-puts ""
-puts "To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
 
-puts "" 
-sleep (1)
-    def menu_option
-        puts "1. Loose Weight"
-        puts "2. Build muscle"
-        puts "3. Increase energy"
-        end
+menu = [
+        "Loose_Weight",
+        "Build_muscle",
+        "Increase_energy"
+        ]
 
 g = 0
-
 while g == 0
-menu_option
-print "Enter your goal using 1, 2 or 3: "   
-goal = gets.chomp.to_i
-             
+prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?", menu)   
 
-if goal == 1   
+if menu = "Loose_Weight" 
 puts "Loosing weight something something"
                 g = 1
                 goal_type = "Loose Weight"
+                goal = 1
 
-        elsif  goal == 2        
+        elsif  menu = "Build_muscle"       
                 puts "Let's get strong together!"
                 g = 1
                 goal_type = "Build Muscle"
+                goal = 2
         
-        elsif goal == 3
+        elsif menu = "Increase_energy" 
                 puts "Energy is important ect ect" 
                 goal_type = "Increase Energy"
                 g = 1 
+                goal = 3
         else
                 puts "invalid"
                 g = 0
