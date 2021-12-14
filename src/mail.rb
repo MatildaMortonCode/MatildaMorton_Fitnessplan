@@ -1,5 +1,6 @@
 require 'mail'
 
+def send_email
 puts "enter email"
 email = gets.chomp
 
@@ -12,3 +13,5 @@ mail = Mail.new do
   end
   
   mail.deliver!
+
+end

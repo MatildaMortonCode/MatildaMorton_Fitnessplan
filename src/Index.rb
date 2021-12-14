@@ -4,7 +4,8 @@ require "down"
 require "fileutils"
 require "mail"
 require "tty-prompt"
-require_relative ("artmessages")
+require_relative "artmessages"
+require_relative "mail"
 
 prompt = TTY::Prompt.new
 
@@ -608,9 +609,6 @@ else
     puts "There is an error with your options, go back and try again"
 end   
 
-puts "enter email: "
-email = gets.chomp
-
-mail.deliver! 
+send_email
 
 exit
