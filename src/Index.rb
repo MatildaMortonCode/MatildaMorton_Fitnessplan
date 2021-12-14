@@ -3,6 +3,7 @@ require "rainbow"
 require "down"
 require "fileutils"
 require "mail"
+require "tty-prompt"
 require_relative ("artmessages")
 
 
@@ -12,10 +13,23 @@ logo
 
 puts "" 
 
-puts "Are you ready to take on the BodyFit challenge for 2022. To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
+def scroll(string)
+        string.each_char do |x|
+            print x.colorize(:yellow)
+            sleep(0.04)
+          end
+        end
+
+
+scroll ("Are you ready to take on the BodyFit challenge for 2022?")
+
+sleep (1)
+
+puts ""
+puts "To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
 
 puts "" 
- 
+sleep (1)
     def menu_option
         puts "1. Loose Weight"
         puts "2. Build muscle"
