@@ -6,7 +6,6 @@ require "mail"
 
 
 
-
 #Welcome Message
 
 
@@ -34,16 +33,16 @@ goal = gets.chomp.to_i
 if goal == 1   
 puts "Loosing weight something something"
                 g = 1
-                goal = "Loose Weight"
+                goal_type = "Loose Weight"
 
         elsif  goal == 2        
                 puts "Let's get strong together!"
                 g = 1
-                goal = "Build Muscle"
+                goal_type = "Build Muscle"
         
         elsif goal == 3
                 puts "Energy is important ect ect" 
-                goal = "Increase Energy"
+                goal_type = "Increase Energy"
                 g = 1 
         else
                 puts "invalid"
@@ -130,14 +129,17 @@ while f == 0
 if fitness == 1   
         puts "You are super lazy"
         f = 1
+        fit_level = "low"
         #fitness = "low"
 elsif fitness == 2
         puts "Atleast you do something"
         f = 2
+        fit_level = "medium"
         #fitness = "medium"
 elsif fitness == 3
         puts "Wow! Great work"
         f = 3
+        fit_level = "high"
         #fitness = "high"
 else
         puts "That's not a valid number, please add a number only"
@@ -147,22 +149,115 @@ end
 end         
 
 
-def final_confirmation
-        puts "The final outcome of your selection is that you want to #{goal}, your current BMI is #{yourbmi}. You said your fitness level is #{fitness}. Are these selections correct?"
+        puts "The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?"
 
-        answer = gets.chomp
+        answer = gets.chomp.to_s
         
-        if answer = yes
+        if answer == "yes"
                 puts"great!"
-        else answer = no 
+        else answer == "no" 
                 "well you messed up, let's try again"
         end
+
+
+
+
+#NUMBERS FOR FEMALES
+#If they are female underwieght and have a low fitness level
+if b = 1 && f = 1
+        fitness_level = 1
+
+ #If they are female underwieght and have a low fitness level       
+elsif b = 1 && f = 2
+        fitness_level = 2
+
+#If they are female underwieght and have a low fitness level
+elsif b = 1 && f = 3
+        fitness_level = 3  
+
+#If they are female healthy weight and have a low fitness level
+elsif b = 2 && f = 1
+        fitness_level = 4
+#if they are female healthy weight and have a medium fitness level
+elsif b = 2 && f = 2
+        fitness_level = 5
+#if they are female healthy weight and have a high fitness level
+elsif b = 2 && f = 3
+        fitness_level = 6
+
+#if they are female overweight and have a low fitness level
+elsif b = 3 && f = 1
+        fitness_level = 7
+#If they are female overweight and have a medium fitness level
+elsif b = 3 && f = 2
+        fitness_level = 8    
+#If they are female overweight and have a high fitness level
+elsif b = 3 && f = 3
+        fitness_level = 9
+        #if they are female obese and have a low fitness level
+elsif b = 4 && f = 1
+        fitness_level = 10
+#If they are female obese and have a medium fitness level
+elsif b = 4 && f = 2
+        fitness_level = 11  
+#If they are female obese and have a high fitness level
+elsif b = 4 && f = 3
+        fitness_level = 12
+
+
+
+#NUMBERS FOR MALES
+#If they are male underwieght and have a low fitness level
+elsif b = 5 && f = 1
+        fitness_level = 13
+
+ #If they are male underwieght and have a low fitness level       
+elsif b = 5 && f = 2
+        fitness_level = 14
+
+#If they are male underwieght and have a low fitness level
+elsif b = 5 && f = 3
+        fitness_level = 15  
+
+#If they are male medium weight and have a low fitness level
+elsif b = 6 && f = 1
+        fitness_level = 16
+
+#if they are male medium weight and have a medium fitness level
+elsif b = 6 && f = 2
+        fitness_level = 17
+
+#if they are male medium weight and have a high fitness level
+elsif b = 6 && f = 3
+        fitness_level = 18
+
+#if they are male overweight and have a low fitness level
+elsif b = 7 && f = 1
+        fitness_level = 19
+#If they are male overweight and have a medium fitness level
+elsif b = 7 && f = 2
+        fitness_level = 20     
+#If they are male overweight and have a high fitness level
+elsif b = 7 && f = 3
+        fitness_level = 21
+
+#if they are male obese and have a low fitness level
+elsif b = 8 && f = 1
+        fitness_level = 22
+#If they are male obese and have a medium fitness level
+elsif b = 8 && f = 2
+        fitness_level = 23    
+#If they are male obese and have a high fitness level
+else b = 8 && f = 3
+        fitness_level = 24
 end
 
 
 #Final output/outcome - Calculates a solution based of the answers given. 
 
 # For real program, the download link would be different per else if - for assessment purposes, they are only different per goal selected, rather than having 70+ different documents. 
+
+
 
 #If user selected loose weight - Refer to conditional.rb for fitness_level number system
 if goal == 1 && fitness_level == 1

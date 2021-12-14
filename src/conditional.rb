@@ -1,5 +1,5 @@
 
-require_relative ".index.rb"
+require_relative "index.rb"
 
 fitness_level = 0
 
