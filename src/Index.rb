@@ -3,13 +3,13 @@ require "rainbow"
 require "down"
 require "fileutils"
 require "mail"
+require_relative ("artmessages")
 
 
 
 #Welcome Message
+logo
 
-
-puts "ADD - Welcome Message"
 puts "" 
 
 puts "Are you ready to take on the BodyFit challenge for 2022. To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?"
