@@ -32,31 +32,24 @@ menu = [
         "Increase_energy"
         ]
 
-g = 0
-while g == 0
+
 prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?", menu)   
 
-if menu = "Loose_Weight" 
+case 
+when menu = "Loose_Weight" 
 puts "Loosing weight something something"
-                g = 1
                 goal_type = "Loose Weight"
                 goal = 1
 
-        elsif  menu = "Build_muscle"       
+when  menu = "Build_muscle"       
                 puts "Let's get strong together!"
-                g = 1
                 goal_type = "Build Muscle"
                 goal = 2
         
-        elsif menu = "Increase_energy" 
+when menu = "Increase_energy" 
                 puts "Energy is important ect ect" 
                 goal_type = "Increase Energy"
-                g = 1 
                 goal = 3
-        else
-                puts "invalid"
-                g = 0
-
 end
 end
 
