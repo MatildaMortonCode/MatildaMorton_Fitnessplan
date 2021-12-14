@@ -257,7 +257,14 @@ end
 
 # For real program, the download link would be different per else if - for assessment purposes, they are only different per goal selected, rather than having 70+ different documents. 
 
+class Fitness_planner
 
+attr_accessor :plan_title, :weekly_food, :shopping_list, :exercise_plan
+end
+
+plan1 = Fitness_planner.new ()
+plan1.plan_title = "Weight loss plan"
+plan1.weekly_food =  "Day 1 - Meal 1, Snack, Meal 2, Snack Meal 3" "Day 2 - Meal 1, Snack, Meal 2, Snack Meal 3"  "Day 3 - Meal 1, Snack, Meal 2, Snack Meal 3 Day 4 - Meal 1, Snack, Meal 2, Snack Meal 3 Day 5 - Meal 1, Snack, Meal 2, Snack Meal 3 Day 6 - Meal 1, Snack, Meal 2, Snack Meal 3"      
 
 #If user selected loose weight - Refer to conditional.rb for fitness_level number system
 if goal == 1 && fitness_level == 1

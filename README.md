@@ -3,12 +3,16 @@
 # Purpose
 BodyFit is a application that supports people to achieve thier health and fitness goals by providing customised plans that take into consideration thier goals, whether that be to loose weight, gain muscle or increase energy. It also considers thier current Body Mass Index, thier gender and thier current fitness levels. This application support a user inputting thier details and provides a fully customised plan based on thier input.
 
+
+
+
+# Scope
 So many fitness planners, don't take into consideration a persons individual needs. This application provides a truley customised solution. As an assessment, the scope of this application is quite small; however given the opportunity, I would like to see more functionality that also considers dietary requirement and disabilites. 
 
 The target audience for this application is both female and male users, in the younger generation, particularly Gen Z. This particular genertion values personilised products more than any other generation and are also more health concious. The branding and overall marketing of the product is aimed at Gen Z. 
 
+An end user will be able to load the program with the assumption that they have standard required technical tools and interact with it step by step. 
 
-# Scope
 - explain how a member of the target audience will use it
 
 
