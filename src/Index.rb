@@ -128,17 +128,17 @@ while f == 0
     fitness = gets.chomp.to_i
 
 if fitness == 1   
-        puts "You are super lazy"
+        puts "It's never to late to start! We know it's hard to excercise when you are out of practice, but you will never regret it! We will start slow I promise. "
         f = 1
         fit_level = "low"
         #fitness = "low"
 elsif fitness == 2
-        puts "Atleast you do something"
+        puts "Great! We have a starting point! Let's build upon what you already do and take it to the next level!"
         f = 2
         fit_level = "medium"
         #fitness = "medium"
 elsif fitness == 3
-        puts "Wow! Great work"
+        puts "Wow! Seems like we are really going to need to step up our plan and give you a real hard challenge.  It's too late to change your selection now. Get ready for some extra hard workouts!"
         f = 3
         fit_level = "high"
         #fitness = "high"
