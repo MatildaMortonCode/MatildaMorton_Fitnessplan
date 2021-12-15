@@ -1,13 +1,16 @@
-require "colorize"
-require "rainbow"
-require "down"
-require "fileutils"
-require "mail"
-require "tty-prompt"
+require "colorize" #colours text
+require "rainbow" #Not currently in use - to investigate
+require "down" #not using - forgot why installed?
+require "fileutils" #supports picture download at end
+require "mail" #Supports email to send with attachment
+require "tty-prompt" #currently used for list selection
+require "daemons" #To rerun program
 require_relative "artmessages"
 require_relative "mail"
 
 prompt = TTY::Prompt.new
+prompt1 = TTY::Prompt.new
+prompt2 = TTY::Prompt.new
 
 #Welcome Message
 logo
@@ -25,33 +28,29 @@ def scroll(string)
 scroll ("Are you ready to take on the BodyFit challenge for 2022?")
 
 #sleep (1)
-
-
-menu = [
-        "Loose_Weight",
-        "Build_muscle",
-        "Increase_energy"
-        ]
-
-
-prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?", menu)   
-
-case 
-when menu = "Loose_Weight" 
-  puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!"
-                goal_type = "Loose Weight"
-                goal = 1
-
-when  menu = "Build_muscle"       
-  puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!"
-  goal_type = "Build Muscle"
-  goal = 2
-        
-when menu = "Increase_energy" 
-  puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me!" 
-  goal_type = "Increase Energy"
-  goal = 3
-end
+   
+        testing = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do | menu|
+                menu.choice 'loose weight' 
+                menu.choice 'build muscle'
+                menu.choice 'increase energy' 
+            end 
+            
+            case 
+            when testing == "loose weight" 
+              puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!"
+                            goal_type = "Loose Weight"
+                            goal = 1
+            
+            when testing == "build muscle"       
+              puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!"
+              goal_type = "Build Muscle"
+              goal = 2
+                    
+            when testing == "increase energy" 
+              puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me!" 
+              goal_type = "Increase Energy"
+              goal = 3
+            end
 
 #system "clear"
 
@@ -65,20 +64,25 @@ BMI is a useful measurement for most people over 18 years old. But it is only an
 #Calculate BMI HERE
 
 
+
+
+
 gendermenu = [
         "Female",
         "Male"
 ]
 
-prompt.select("Were you at born as Female or Male?", gendermenu)  
+prompt1.select("Were you at born as Female or Male?", gendermenu)  
 
 case 
 
 when gendermenu = "Female"  
         gen = 1
+        puts "you entered female"
         
 when gendermenu = "Male"
         gen = 2
+        puts "you entered male"
 
 end
 
@@ -126,7 +130,7 @@ b = 8
 else
     puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you check the instructions on each input"
 
-end 0
+end 
 
 
 
@@ -164,17 +168,27 @@ end
 end         
 
 
-        puts "The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?"
+        puts 
 
-        answer = gets.chomp.to_s
+
+
+
+        confirmation = [
+                "Yes",
+                "No"
+        ]
         
-        if answer == "yes"
-                puts"great!"
-        else answer == "no" 
-                "well you messed up, let's try again"
+        prompt2.select("The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?", confirmation)  
+        
+        case 
+        
+        when confirmation = "Yes, these details are correct"  
+        
+                
+        when confirmation = "No"
+              puts "test"
         end
-
-
+        
 
 
 #NUMBERS FOR FEMALES
