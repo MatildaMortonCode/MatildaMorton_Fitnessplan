@@ -15,3 +15,4 @@ def logo
                                                                            
    ".colorize(:blue)
 end
+

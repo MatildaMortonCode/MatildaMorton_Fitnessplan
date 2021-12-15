@@ -9,11 +9,8 @@ BodyFit is a application that supports people to achieve thier health and fitnes
 # Scope
 So many fitness planners, don't take into consideration a persons individual needs. This application provides a truley customised solution. As an assessment, the scope of this application is quite small; however given the opportunity, I would like to see more functionality that also considers dietary requirement and disabilites. 
 
-The target audience for this application is both female and male users, in the younger generation, particularly Gen Z. This particular genertion values personilised products more than any other generation and are also more health concious. The branding and overall marketing of the product is aimed at Gen Z. 
+The target audience for this application is both female and male users, in the younger generation, particularly Gen Z. This particular genertion values personilised products more than any other generation and are also more health concious. The branding and overall marketing of the product is aimed at Gen Z. The relata ble wording and tone fo the messaging throughtout further supports this target audience reach.  
 
-An end user will be able to load the program with the assumption that they have standard required technical tools and interact with it step by step. 
-
-- explain how a member of the target audience will use it
 
 
 
@@ -22,10 +19,13 @@ An end user will be able to load the program with the assumption that they have 
  - Custom goal selection
  - Custom plan based on goal, BMI and gender and 
  - User inputs email and thier plan is sent to them
+ - Enter email address and have a tips sheet sent to thier email (as a side note, this feature could also be used to collect user data and add to a mailing list ect.)
 
 # User interaction
+An end user will be able to load the program with the assumption that they have standard required technical tools and interact with it step by step. A user can then follow clearly the prpmpts to enter thier details and they will be given a final report designed just for them.
 
 
+# what is the assessor looking for here?
 Develop an outline of the user interaction and experience for the application.
 Your outline must include:
 - how the user will find out how to interact with / use each feature

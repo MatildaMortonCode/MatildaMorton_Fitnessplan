@@ -9,8 +9,6 @@ require_relative "artmessages"
 require_relative "mail"
 
 prompt = TTY::Prompt.new
-prompt1 = TTY::Prompt.new
-prompt2 = TTY::Prompt.new
 
 #Welcome Message
 logo
