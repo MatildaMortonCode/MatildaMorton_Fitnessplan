@@ -38,18 +38,21 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?")
             case 
             when testing == "loose weight" 
               puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!"
-                            goal_type = "Loose Weight"
-                            goal = 1
+                goal_type = "Loose Weight"
+                goal = 1
+                puts "loose"
             
             when testing == "build muscle"       
               puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!"
               goal_type = "Build Muscle"
               goal = 2
+              puts "build"
                     
             when testing == "increase energy" 
               puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me!" 
               goal_type = "Increase Energy"
               goal = 3
+              puts "increase"
             end
 
 #system "clear"
@@ -64,29 +67,26 @@ BMI is a useful measurement for most people over 18 years old. But it is only an
 #Calculate BMI HERE
 
 
-
-
-
-gendermenu = [
-        "Female",
-        "Male"
-]
-
-prompt1.select("Were you at born as Female or Male?", gendermenu)  
+gender = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |gender|
+        gender.choice 'Female' 
+        gender.choice 'Male' 
+    end  
 
 case 
 
-when gendermenu = "Female"  
-        gen = 1
+when gender == "Female"  
+        gen = "1"
         puts "you entered female"
         
-when gendermenu = "Male"
-        gen = 2
+when gender == "Male"
+        gen == "2"
         puts "you entered male"
 
 end
 
+b = 0
 
+while b == 0
 print "Enter you height (cm): "
 height = gets.to_i
 
@@ -130,63 +130,55 @@ b = 8
 else
     puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you check the instructions on each input"
 
+
+end
 end 
 
 
 
 #Calculate Fitness level
 
-puts "Great work! Now how would you describe your fitness level?"
+level = prompt.select("So we know how to start your fitness plan, we need to know what level of fitness you are at. Would you have a low, medium or high level of fitness?") do |level|
+        level.choice 'Low' 
+        level.choice 'Medium' 
+        level.choice 'High'
+    end  
 
-f = 0
-while f == 0 
-    puts "1. Low"
-    puts "2. Medium"
-    puts "3. High"
-    fitness = gets.chomp.to_i
+case 
 
-if fitness == 1   
+when level == "Low"  
         puts "It's never to late to start! We know it's hard to excercise when you are out of practice, but you will never regret it! We will start slow I promise. "
         f = 1
         fit_level = "low"
-        #fitness = "low"
-elsif fitness == 2
+        
+when level == "Medium"
         puts "Great! We have a starting point! Let's build upon what you already do and take it to the next level!"
-        f = 2
-        fit_level = "medium"
-        #fitness = "medium"
-elsif fitness == 3
-        puts "Wow! Seems like we are really going to need to step up our plan and give you a real hard challenge.  It's too late to change your selection now. Get ready for some extra hard workouts!"
-        f = 3
-        fit_level = "high"
-        #fitness = "high"
-else
-        puts "That's not a valid number, please add a number only"
-        f = 0
+                f = 2
+                fit_level = "medium"
+
+        when level == "High"
+                puts "Wow! Seems like we are really going to need to step up our plan and give you a real hard challenge.  It's too late to change your selection now. Get ready for some extra hard workouts!"
+                f = 3
+                fit_level = "high"
 
 end
-end         
 
 
-        puts 
+confirm = prompt.select("The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
+        confirm.choice 'Yes, these details are correct' 
+        confirm.choice 'No, these details are not correct, I need to start again'
+    end  
 
-
-
-
-        confirmation = [
-                "Yes",
-                "No"
-        ]
-        
-        prompt2.select("The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?", confirmation)  
         
         case 
         
-        when confirmation = "Yes, these details are correct"  
-        
+        when confirm == "Yes, these details are correct" 
+        puts "great we are just preparing your plan now...beep bop beep"
                 
-        when confirmation = "No"
-              puts "test"
+        when confirm == "No, these details are not correct, I need to start again"
+              puts "The program will now end, please restart it and try again"
+              sleep(2)
+             exit
         end
         
 
