@@ -17,14 +17,14 @@ puts ""
 def scroll(string)
         string.each_char do |x|
             print x.colorize(:yellow)
-            sleep(0.04)
+            sleep(0.02)
           end
         end
 
 
 scroll ("Are you ready to take on the BodyFit challenge for 2022?")
 
-sleep (1)
+#sleep (1)
 
 
 menu = [
@@ -64,10 +64,24 @@ BMI is a useful measurement for most people over 18 years old. But it is only an
 
 #Calculate BMI HERE
 
-b = 0
-while b == 0
-puts "Were you at born as Female or Male? Enter Female or Male: "
-gender = gets.chomp.to_s.downcase
+
+gendermenu = [
+        "Female",
+        "Male"
+]
+
+prompt.select("Were you at born as Female or Male?", gendermenu)  
+
+case 
+
+when gendermenu = "Female"  
+        gen = 1
+        
+when gendermenu = "Male"
+        gen = 2
+
+end
+
 
 print "Enter you height (cm): "
 height = gets.to_i
@@ -78,43 +92,42 @@ kegs = gets.to_i
 cm_to_m = height / 100
 yourbmi = kegs / cm_to_m
 
-if yourbmi <= 18.5 && gender == "female"
+if yourbmi <= 18.5 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 1
 
-elsif yourbmi == 18.6..24.9 && gender == "female"
+elsif yourbmi == 18.6..24.9 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 2
 
-elsif yourbmi == 25..29.9 && gender == "female"
+elsif yourbmi == 25..29.9 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 3
 
-elsif yourbmi >= 31 && gender == "female"
-print "Your BMI is #{yourbmi}\n"
+elsif yourbmi >= 31 && gen == "1"
 b = 4
 
-elsif yourbmi <= 18.5 && gender == "male"
+elsif yourbmi <= 18.5 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 5
 
-elsif yourbmi == 18.6..24.9 && gender == "male"
+elsif yourbmi == 18.6..24.9 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 6
 
-elsif yourbmi == 25..29.9 && gender == "male"
+elsif yourbmi == 25..29.9 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 7
 
-elsif yourbmi >= 30 && gender == "male"
+elsif yourbmi >= 30 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 8
 
 else
     puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you check the instructions on each input"
 
-end 
-end
+end 0
+
 
 
 #Calculate Fitness level
@@ -262,7 +275,7 @@ end
 
 #If user selected loose weight - Refer to conditional.rb for fitness_level number system
 if goal == 1 && fitness_level == 1
-    puts "You want to loose weight, but you are not a vey active person. It seems you also don't have much weight to loose. Perhaps you should seek professional support for your goals. I have added a list of support lines "
+    puts "Second fitness option, your file will download soon"
     tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
