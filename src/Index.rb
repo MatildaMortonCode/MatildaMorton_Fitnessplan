@@ -19,7 +19,7 @@ puts ""
 def scroll(string)
         string.each_char do |x|
             print x.colorize(:yellow)
-            sleep(0.02)
+            sleep(0.05)
           end
         end
 
@@ -29,24 +29,29 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?\n \n")
 #sleep (1)
    
         mainmen = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?\n \n") do |menu|
-                menu.choice 'loose weight' 
-                menu.choice 'build muscle'
-                menu.choice 'increase energy' 
+                menu.choice "loose weight" 
+                menu.choice "build muscle"
+                menu.choice "increase energy" 
             end 
             
+system "clear"
+
             case 
             when mainmen == "loose weight" 
+                puts ""
               puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!\n \n"
                 goal_type = "Loose Weight"
                 goal = 1
             
-            when mainmen == "build muscle"       
+            when mainmen == "build muscle"  
+                puts ""     
               puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!\n \n"
               goal_type = "Build Muscle"
               goal = 2
                     
             when mainmen == "increase energy" 
-              puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me! \n \n" 
+                puts ""
+                puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me! \n \n" 
               goal_type = "Increase Energy"
               goal = 3
 
@@ -59,9 +64,6 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?\n \n")
             end
 
 
-system "clear"
-
-
 awesome
 
 
@@ -69,7 +71,7 @@ puts "Thanks for that! Now we are going to calculate your Body Mass Index, this 
 
 It is useful to consider BMI alongside waist circumference, as waist measurement helps to assess risk by measuring the amount of fat carried around your middle.
 
-BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition. Like we mentioned earlier, don't get too focused on BMI ro the scales when starting and take lots of before and afters, this just helps us to create a custom plan for you! We will also take into consideration your current excercise levels."
+BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition. Like we mentioned earlier, don't get too focused on BMI ro the scales when starting and take lots of before and afters, this just helps us to create a custom plan for you! We will also take into consideration your current excercise levels.\n"
 
 #Calculate BMI HERE
 
@@ -84,13 +86,9 @@ end
 case
 when gender == "Female" 
         gen = "1"
-        puts "you are F"
-        puts gen
         
 when gender == "Male"
-        puts "you are M"
         gen = "2"
-        puts gen
 
 end
 
@@ -109,6 +107,8 @@ cm_to_square = height * height
 
 yourbmi = kegs / cm_to_square 
 
+yourbmi = yourbmi.to_i
+
 
 rescue StandardError => e
         puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg"
@@ -116,8 +116,10 @@ rescue StandardError => e
 next
 end       
         
+if yourbmi <=13
+        puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again"
 
-if yourbmi <= 18.5 && gen == "1"
+elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "1"
 puts "Your BMI is #{yourbmi}\n"
 b = 1
 
@@ -133,7 +135,7 @@ elsif yourbmi >= 30 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 4
 
-elsif yourbmi <= 18.5 && gen == "2"
+elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 5
 
@@ -195,6 +197,7 @@ end
 confirm = prompt.select("The final outcome of your selection is that you want to #{mainmen}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
         confirm.choice 'Yes, these details are correct' 
         confirm.choice 'No, these details are not correct, I need to start again'
+        
     end  
 
         
@@ -205,6 +208,8 @@ confirm = prompt.select("The final outcome of your selection is that you want to
                 
         when confirm == "No, these details are not correct, I need to start again"
               puts "The program will now end, please restart it and try again"
+              sleep(1)
+              puts goodbye
               sleep(2)
              exit
         end
