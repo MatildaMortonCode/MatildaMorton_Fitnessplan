@@ -3,6 +3,7 @@ require "fileutils" #supports picture download at end
 require "mail" #Supports email to send with attachment
 require "tty-prompt" #currently used for list selection
 require "tty-progressbar"
+require "down" #Supports picture download at end
 require_relative "artmessages.rb" 
 require_relative "mail.rb"
 require_relative "fitplan.rb"

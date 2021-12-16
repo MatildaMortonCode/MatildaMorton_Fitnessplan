@@ -1,4 +1,5 @@
 require "down"
+require "fileutils"
 
 
 
@@ -13,101 +14,101 @@ def fineout(goal, fitness_level)
 
 if goal == 1 && fitness_level == 1
     puts "Second fitness option, your file will download soon"
-    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-    FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
+    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
+    FileUtils.mv(tempfile.path, "./#{tempfile.loose-weight}")
 
 elsif goal == 1 && fitness_level == 2
     puts "Second fitness option, your file will download soon" 
-    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
     FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
 elsif goal == 1 && fitness_level == 3
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 4
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 5
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 6
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 7
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 8
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 9
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 10
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 11
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 12
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 13
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 14
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 15
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 16
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 17
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 18
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 19
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 20
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 21
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 22
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 23
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 elsif goal == 1 && fitness_level == 24
         puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
+        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.jpg")
         FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
 
 #If user selected Gain muscle 
