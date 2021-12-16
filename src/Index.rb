@@ -37,14 +37,17 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?\n \n")
             case 
             when mainmen == "loose weight" 
               puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!\n \n"
+                goal_type = "Loose Weight"
                 goal = 1
             
             when mainmen == "build muscle"       
               puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!\n \n"
+              goal_type = "Build Muscle"
               goal = 2
                     
             when mainmen == "increase energy" 
               puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me! \n \n" 
+              goal_type = "Increase Energy"
               goal = 3
 
             end
@@ -231,8 +234,17 @@ puts fineout(goal, fitness_level)
 
 system "clear"
 
-goodbye
+bar = TTY::ProgressBar.new("Downloading and closing program [:bar] :elapsed :percent", total: 30)
+30.times do
+  sleep(0.2)
+  bar.advance
+end
 
-sleep(2)
+sleep(1)
+
+
+puts goodbye
+
+sleep(1)
 
 exit
