@@ -97,15 +97,17 @@ end
 b = 0
 while b == 0
 begin
-print "Enter you height (m): "
+print "Enter you height (Centremeters): "
 height = gets.to_f
 
-print "Enter you weight (kgs): "
+print "Enter you weight (Kilograms): "
 kegs = gets.to_f
 
-cm_to_square = height * height
+cm_to_m = height / 100
 
-yourbmi = kegs / cm_to_square 
+m_to_square2 = cm_to_m * cm_to_m
+
+yourbmi = kegs / m_to_square2
 
 yourbmi = yourbmi.to_i
 
