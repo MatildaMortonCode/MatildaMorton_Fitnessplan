@@ -1,12 +1,12 @@
 require "colorize" #colours text
-require "rainbow" #Not currently in use - to investigate
-require "down" #not using - forgot why installed?
 require "fileutils" #supports picture download at end
 require "mail" #Supports email to send with attachment
 require "tty-prompt" #currently used for list selection
-require "daemons" #To rerun program
-require_relative "artmessages"
-require_relative "mail"
+require_relative "artmessages.rb" 
+require_relative "mail.rb"
+require_relative "fitplan.rb"
+require_relative "final.rb"
+require_relative "fitlevelnum.rb"
 
 prompt = TTY::Prompt.new
 
@@ -23,11 +23,11 @@ def scroll(string)
         end
 
 
-scroll ("Are you ready to take on the BodyFit challenge for 2022?")
+scroll ("Are you ready to take on the BodyFit challenge for 2022?\n")
 
 #sleep (1)
    
-        testing = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do | menu|
+        testing = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |menu|
                 menu.choice 'loose weight' 
                 menu.choice 'build muscle'
                 menu.choice 'increase energy' 
@@ -53,71 +53,92 @@ scroll ("Are you ready to take on the BodyFit challenge for 2022?")
               puts "increase"
             end
 
-#system "clear"
 
 
-puts "Thanks for that! Now we are going to calculate your Body Mass Index, this is calculated off your height and weight"
 
-puts "It is useful to consider BMI alongside waist circumference, as waist measurement helps to assess risk by measuring the amount of fat carried around your middle.
+system "clear"
+
+
+awesome
+
+
+puts "Thanks for that! Now we are going to calculate your Body Mass Index, this is calculated off your height and weight
+
+It is useful to consider BMI alongside waist circumference, as waist measurement helps to assess risk by measuring the amount of fat carried around your middle.
 
 BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition. Like we mentioned earlier, don't get too focused on BMI ro the scales when starting and take lots of before and afters, this just helps us to create a custom plan for you! We will also take into consideration your current excercise levels."
 
 #Calculate BMI HERE
 
 
+
+
 gender = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |gender|
-        gender.choice 'Female' 
-        gender.choice 'Male' 
-    end  
+        gender.choice "Female"
+        gender.choice "Male" 
+end 
 
-case 
-
-when gender == "Female"  
+case
+when gender == "Female" 
         gen = "1"
-        puts "you entered female"
+        puts "you are F"
+        puts gen
         
 when gender == "Male"
-        gen == "2"
-        puts "you entered male"
+        puts "you are M"
+        gen = "2"
+        puts gen
 
 end
 
-b = 0
 
+        
+b = 0
 while b == 0
-print "Enter you height (cm): "
-height = gets.to_i
+begin
+print "Enter you height (m): "
+height = gets.to_f
 
 print "Enter you weight (kgs): "
-kegs = gets.to_i
+kegs = gets.to_f
 
-cm_to_m = height / 100
-yourbmi = kegs / cm_to_m
+cm_to_square = height * height
+
+yourbmi = kegs / cm_to_square 
+
+
+rescue StandardError => e
+        puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg"
+        retry
+next
+end       
+        
 
 if yourbmi <= 18.5 && gen == "1"
-print "Your BMI is #{yourbmi}\n"
+puts "Your BMI is #{yourbmi}\n"
 b = 1
 
-elsif yourbmi == 18.6..24.9 && gen == "1"
-print "Your BMI is #{yourbmi}\n"
+elsif yourbmi >= 18.6 && yourbmi <25 && gen == "1"
+puts "Your BMI is #{yourbmi}\n"
 b = 2
 
-elsif yourbmi == 25..29.9 && gen == "1"
+elsif yourbmi >= 25 && yourbmi <30 && gen == "1"
 print "Your BMI is #{yourbmi}\n"
 b = 3
 
-elsif yourbmi >= 31 && gen == "1"
+elsif yourbmi >= 30 && gen == "1"
+print "Your BMI is #{yourbmi}\n"
 b = 4
 
-elsif yourbmi <= 18.5 && gen == "1"
+elsif yourbmi <= 18.5 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 5
 
-elsif yourbmi == 18.6..24.9 && gen == "2"
+elsif yourbmi >= 18.5 && yourbmi <= 25 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 6
 
-elsif yourbmi == 25..29.9 && gen == "2"
+elsif yourbmi >= 25 && yourbmi <= 29.9 && gen == "2"
 print "Your BMI is #{yourbmi}\n"
 b = 7
 
@@ -126,11 +147,17 @@ print "Your BMI is #{yourbmi}\n"
 b = 8
 
 else
-    puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you check the instructions on each input"
-
-
+    puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you only add numbers to the input section.\n"
 end
-end 
+end
+
+
+sleep (5)
+
+system "clear"
+
+fittitle
+
 
 
 
@@ -179,453 +206,33 @@ confirm = prompt.select("The final outcome of your selection is that you want to
              exit
         end
         
+system "clear"
 
+fitness_level = numsystem(b,f)
+puts fitness_level
+puts "Your custom plan will download momentarily, it will contatin information similar to the below!"
 
-#NUMBERS FOR FEMALES
-#If they are female underwieght and have a low fitness level
-if b = 1 && f = 1
-        fitness_level = 1
+plan1 = Fitplan.new("weight loss plan", "Day 1" "Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 3 - Meal 1, Snack, Meal 2, Snack, Meal 3 "  "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 4 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 5 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 6 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 7 - Meal 1, Snack, Meal 2, Snack, Meal 3 ", "Ingredient, Ingredient, Ingredient", "Day 1 - Exercise 1")
 
- #If they are female underwieght and have a low fitness level       
-elsif b = 1 && f = 2
-        fitness_level = 2
 
-#If they are female underwieght and have a low fitness level
-elsif b = 1 && f = 3
-        fitness_level = 3  
 
-#If they are female healthy weight and have a low fitness level
-elsif b = 2 && f = 1
-        fitness_level = 4
-#if they are female healthy weight and have a medium fitness level
-elsif b = 2 && f = 2
-        fitness_level = 5
-#if they are female healthy weight and have a high fitness level
-elsif b = 2 && f = 3
-        fitness_level = 6
+puts ""
+puts plan1.plantitle.colorize(:red)
+puts ""
+puts plan1.weeklyfood.colorize(:magenta)
+puts ""
+puts plan1.shoppinglist.colorize(:yellow)
+puts ""
+puts plan1.exerciseplan.colorize(:blue)
+puts ""
 
-#if they are female overweight and have a low fitness level
-elsif b = 3 && f = 1
-        fitness_level = 7
-#If they are female overweight and have a medium fitness level
-elsif b = 3 && f = 2
-        fitness_level = 8    
-#If they are female overweight and have a high fitness level
-elsif b = 3 && f = 3
-        fitness_level = 9
-        #if they are female obese and have a low fitness level
-elsif b = 4 && f = 1
-        fitness_level = 10
-#If they are female obese and have a medium fitness level
-elsif b = 4 && f = 2
-        fitness_level = 11  
-#If they are female obese and have a high fitness level
-elsif b = 4 && f = 3
-        fitness_level = 12
 
+puts fineout(goal, fitness_level)
 
+system "clear"
 
-#NUMBERS FOR MALES
-#If they are male underwieght and have a low fitness level
-elsif b = 5 && f = 1
-        fitness_level = 13
+goodbye
 
- #If they are male underwieght and have a low fitness level       
-elsif b = 5 && f = 2
-        fitness_level = 14
-
-#If they are male underwieght and have a low fitness level
-elsif b = 5 && f = 3
-        fitness_level = 15  
-
-#If they are male medium weight and have a low fitness level
-elsif b = 6 && f = 1
-        fitness_level = 16
-
-#if they are male medium weight and have a medium fitness level
-elsif b = 6 && f = 2
-        fitness_level = 17
-
-#if they are male medium weight and have a high fitness level
-elsif b = 6 && f = 3
-        fitness_level = 18
-
-#if they are male overweight and have a low fitness level
-elsif b = 7 && f = 1
-        fitness_level = 19
-#If they are male overweight and have a medium fitness level
-elsif b = 7 && f = 2
-        fitness_level = 20     
-#If they are male overweight and have a high fitness level
-elsif b = 7 && f = 3
-        fitness_level = 21
-
-#if they are male obese and have a low fitness level
-elsif b = 8 && f = 1
-        fitness_level = 22
-#If they are male obese and have a medium fitness level
-elsif b = 8 && f = 2
-        fitness_level = 23    
-#If they are male obese and have a high fitness level
-else b = 8 && f = 3
-        fitness_level = 24
-end
-
-
-#Final output/outcome - Calculates a solution based of the answers given. 
-
-# For real program, the download link would be different per else if - for assessment purposes, they are only different per goal selected, rather than having 70+ different documents. 
-     
-
-#If user selected loose weight - Refer to conditional.rb for fitness_level number system
-if goal == 1 && fitness_level == 1
-    puts "Second fitness option, your file will download soon"
-    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-    FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 1 && fitness_level == 2
-    puts "Second fitness option, your file will download soon" 
-    tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-    FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 1 && fitness_level == 3
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 4
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 5
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 6
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 7
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 8
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 9
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 10
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 11
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 12
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 13
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 14
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 15
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 16
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 17
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 18
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 19
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 20
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 21
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 22
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 23
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-elsif goal == 1 && fitness_level == 24
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Loose-weight.%20pdf.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-#If user selected Gain muscle 
-
-elsif goal == 2 && fitness_level == 1
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 2
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 3
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 4
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 5
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 6
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 7
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 8
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 9
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 10
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 11
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 12
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 13
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 14
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 15
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 16
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 17
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 18
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 19
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-
-elsif goal == 2 && fitness_level == 20
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 21
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 22
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level == 23
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 2 && fitness_level ==24
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Build-muscle-plan.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-# If user selected gain energy
-
-elsif goal == 3 && fitness_level == 1
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 2
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 3
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 4
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 5
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 6
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 7
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 8
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 9
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 10
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 11
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 12
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 13
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 14
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 15
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 16
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 17
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 18
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 19
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-
-elsif goal == 3 && fitness_level == 20
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 21
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 22
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level == 23
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-        FileUtils.mv(tempfile.path, "./#{tempfile.original_filename}")
-
-elsif goal == 3 && fitness_level ==24
-        puts "Second fitness option, your file will download soon" 
-        tempfile = Down.download("https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan/blob/main/docs/Energy.pdf")
-
-else 
-    puts "There is an error with your options, go back and try again"
-end   
-
-send_email
+sleep(2)
 
 exit
