@@ -2,6 +2,7 @@ require "colorize" #colours text
 require "fileutils" #supports picture download at end
 require "mail" #Supports email to send with attachment
 require "tty-prompt" #currently used for list selection
+require "tty-progressbar"
 require_relative "artmessages.rb" 
 require_relative "mail.rb"
 require_relative "fitplan.rb"
@@ -23,37 +24,36 @@ def scroll(string)
         end
 
 
-scroll ("Are you ready to take on the BodyFit challenge for 2022?\n")
+scroll ("Are you ready to take on the BodyFit challenge for 2022?\n \n")
 
 #sleep (1)
    
-        testing = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |menu|
+        mainmen = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?\n \n") do |menu|
                 menu.choice 'loose weight' 
                 menu.choice 'build muscle'
                 menu.choice 'increase energy' 
             end 
             
             case 
-            when testing == "loose weight" 
-              puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!"
-                goal_type = "Loose Weight"
+            when mainmen == "loose weight" 
+              puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!\n \n"
                 goal = 1
-                puts "loose"
             
-            when testing == "build muscle"       
-              puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!"
-              goal_type = "Build Muscle"
+            when mainmen == "build muscle"       
+              puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!\n \n"
               goal = 2
-              puts "build"
                     
-            when testing == "increase energy" 
-              puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me!" 
-              goal_type = "Increase Energy"
+            when mainmen == "increase energy" 
+              puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me! \n \n" 
               goal = 3
-              puts "increase"
+
             end
 
-
+            bar = TTY::ProgressBar.new("loading next [:bar] :elapsed :percent", total: 30)
+            30.times do
+              sleep(0.2)
+              bar.advance
+            end
 
 
 system "clear"
@@ -189,7 +189,7 @@ when level == "Medium"
 end
 
 
-confirm = prompt.select("The final outcome of your selection is that you want to #{goal_type}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
+confirm = prompt.select("The final outcome of your selection is that you want to #{mainmen}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
         confirm.choice 'Yes, these details are correct' 
         confirm.choice 'No, these details are not correct, I need to start again'
     end  
