@@ -27,43 +27,43 @@ def scroll(string)
 scroll ("Are you ready to take on the BodyFit challenge for 2022?\n \n")
 
 #sleep (1)
-   
+   #Welcome message continued - This dislays the text in a graphic manner
         mainmen = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?\n \n") do |menu|
                 menu.choice "loose weight" 
                 menu.choice "build muscle"
                 menu.choice "increase energy" 
             end 
             
-system "clear"
+#UI  - clearer to read, empty puts
+puts ""
 
+#Calculates the goal number for use in final.rb and also provides user with information about thier choice. Supports confirmation of the choice they have made. 
             case 
             when mainmen == "loose weight" 
                 puts ""
               puts "It's great to focus on loosing weight! But remember, when we start becoming healthier and excercise we also naturally gain muscle, so when starting your journey, take lots of pictures of your progress rather than focusing on the scales. Don't worry, your plan will still be custom to your weight loss goal!\n \n"
-                goal_type = "Loose Weight"
                 goal = 1
             
             when mainmen == "build muscle"  
                 puts ""     
               puts "You are my people! Building muscle not only makes you feel good, it also means you look good! The more muscle you have, the more your body breaks down fat. We will make sure your custom plan has lots of weights to keep you excited!\n \n"
-              goal_type = "Build Muscle"
               goal = 2
                     
             when mainmen == "increase energy" 
                 puts ""
                 puts "Uh! I feel you! There is nothing worse than being tired. How great is it that we can do something about this by filling out body with the energy and nutrients it needs to feel better. If this is your goal, it's important to also go get your bloods tested to ensure you are not Iron deficent. Iron deficiency is the most common nutritional disorder affecting about 20-25% of the world's population. It's a real drain! Trust me! \n \n" 
-              goal_type = "Increase Energy"
               goal = 3
 
             end
 
+            #User UI, better experience 
             bar = TTY::ProgressBar.new("loading next [:bar] :elapsed :percent", total: 30)
             30.times do
               sleep(0.2)
               bar.advance
             end
 
-
+# Graphic intro to next step - refer to artmessages.rb
 awesome
 
 
@@ -73,10 +73,7 @@ It is useful to consider BMI alongside waist circumference, as waist measurement
 
 BMI is a useful measurement for most people over 18 years old. But it is only an estimate and it doesn’t take into account age, ethnicity, gender and body composition. Like we mentioned earlier, don't get too focused on BMI ro the scales when starting and take lots of before and afters, this just helps us to create a custom plan for you! We will also take into consideration your current excercise levels.\n"
 
-#Calculate BMI HERE
-
-
-
+#Asks user for gender and assigns a number to this for use later
 
 gender = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |gender|
         gender.choice "Female"
@@ -93,7 +90,7 @@ when gender == "Male"
 end
 
 
-        
+#Calculates BMI     
 b = 0
 while b == 0
 begin
@@ -116,7 +113,9 @@ rescue StandardError => e
         puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg"
         retry
 next
-end       
+end   
+
+#Combines the options from BMI calculation and gender option to produce a end key that represents both. Used later in fitlevelnum.rb
         
 if yourbmi <=13
         puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again"
@@ -163,12 +162,10 @@ sleep (5)
 
 system "clear"
 
+#ASCII title -refer to artmessages.rb
 fittitle
 
-
-
-
-#Calculate Fitness level
+#Asks user to select thier fitenss level, then assigns a number to fit level to be combined in fitlevelnum.rb
 
 level = prompt.select("So we know how to start your fitness plan, we need to know what level of fitness you are at. Would you have a low, medium or high level of fitness?") do |level|
         level.choice 'Low' 
@@ -195,6 +192,7 @@ when level == "Medium"
 
 end
 
+#Uers has final check of thier selection and can confirm what they have entered, if they have entered something incorrect, then they have the option to terminate and re-run the program. I have selected a terminate approach to avoid errors.
 
 confirm = prompt.select("The final outcome of your selection is that you want to #{mainmen}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
         confirm.choice 'Yes, these details are correct' 
@@ -218,10 +216,13 @@ confirm = prompt.select("The final outcome of your selection is that you want to
         
 system "clear"
 
+#Fitness level is not an actual calculated level, it's simply a combination of variables that provide a key number depaending on what the user has imputted. Refer to fitlevelnum.rb
 fitness_level = numsystem(b,f)
 puts fitness_level
 puts "Your custom plan will download momentarily, it will contatin information similar to the below!"
 
+
+#This was just to I could show use of a class - EXAMPLE ONLY
 plan1 = Fitplan.new("weight loss plan", "Day 1" "Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 3 - Meal 1, Snack, Meal 2, Snack, Meal 3 "  "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 4 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 5 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 6 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 7 - Meal 1, Snack, Meal 2, Snack, Meal 3 ", "Ingredient, Ingredient, Ingredient", "Day 1 - Exercise 1")
 
 
@@ -236,10 +237,12 @@ puts ""
 puts plan1.exerciseplan.colorize(:blue)
 puts ""
 
-
+#This is the final outcome after the user has agreed that thier details are correct. Refer to final.rb
 puts fineout(goal, fitness_level)
 
-system "clear"
+
+
+#User experience finishing so they know the program has ended. 
 
 bar = TTY::ProgressBar.new("Downloading and closing program [:bar] :elapsed :percent", total: 30)
 30.times do
