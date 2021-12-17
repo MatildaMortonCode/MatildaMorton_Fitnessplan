@@ -74,7 +74,7 @@ BMI is a useful measurement for most people over 18 years old. But it is only an
 
 #Asks user for gender and assigns a number to this for use later
 
-gender = prompt.select("To get started, we are going to need to get some details from yourself. We will look at the goals you want to achieve and provide you with a custom plan that is just right for you! First we need to know what your goal is, do you want to Loose weight, Build muscle or Increase energy?") do |gender|
+gender = prompt.select("So your plan is tailered for you, please let us know if you are female or male from birth.\n") do |gender|
         gender.choice "Female"
         gender.choice "Male" 
 end 
@@ -111,7 +111,7 @@ yourbmi = yourbmi.to_i
 
 
 rescue StandardError => e
-        puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg"
+        puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg\n"
         retry
 next
 end   
@@ -119,7 +119,7 @@ end
 #Combines the options from BMI calculation and gender option to produce a end key that represents both. Used later in fitlevelnum.rb
         
 if yourbmi <=13
-        puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again"
+        puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again\n"
 
 elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "1"
 puts "Your BMI is #{yourbmi}, for a female this means your are currently already underweight\n"
@@ -167,7 +167,7 @@ fittitle
 
 #Asks user to select thier fitenss level, then assigns a number to fit level to be combined in fitlevelnum.rb
 
-level = prompt.select("So we know how to start your fitness plan, we need to know what level of fitness you are at. Would you have a low, medium or high level of fitness?") do |level|
+level = prompt.select("So we know how to start your fitness plan, we need to know what level of fitness you are at. Would you have a low, medium or high level of fitness?\n") do |level|
         level.choice 'Low' 
         level.choice 'Medium' 
         level.choice 'High'
@@ -176,26 +176,26 @@ level = prompt.select("So we know how to start your fitness plan, we need to kno
 case 
 
 when level == "Low"  
-        puts "It's never to late to start! We know it's hard to excercise when you are out of practice, but you will never regret it! We will start slow I promise. "
+        puts "It's never to late to start! We know it's hard to excercise when you are out of practice, but you will never regret it! We will start slow I promise.\n "
         f = 1
-        fit_level = "low"
+
         
 when level == "Medium"
-        puts "Great! We have a starting point! Let's build upon what you already do and take it to the next level!"
+        puts "Great! We have a starting point! Let's build upon what you already do and take it to the next level!\n"
                 f = 2
-                fit_level = "medium"
 
         when level == "High"
-                puts "Wow! Seems like we are really going to need to step up our plan and give you a real hard challenge.  It's too late to change your selection now. Get ready for some extra hard workouts!"
+                puts "Wow! Seems like we are really going to need to step up our plan and give you a real hard challenge.  It's too late to change your selection now. Get ready for some extra hard workouts!\n"
                 f = 3
-                fit_level = "high"
 
 end
 
 #Uers has final check of thier selection and can confirm what they have entered, if they have entered something incorrect, then they have the option to terminate and re-run the program. I have selected a terminate approach to avoid errors.
 
-confirm = prompt.select("The final outcome of your selection is that you want to #{mainmen}, your current BMI is #{yourbmi}. You said your fitness level is #{fit_level}. Are these selections correct?") do |confirm|
+confirm = prompt.select("The final outcome of your selection is that you want to #{mainmen}, your current BMI is #{yourbmi}. You said your fitness level is #{level}. Are these selections correct?\n") do |confirm|
+puts""
         confirm.choice 'Yes, these details are correct' 
+        puts ""
         confirm.choice 'No, these details are not correct, I need to start again'
         
     end  
@@ -204,7 +204,7 @@ confirm = prompt.select("The final outcome of your selection is that you want to
         case 
         
         when confirm == "Yes, these details are correct" 
-        puts "great we are just preparing your plan now...beep bop beep"
+
                 
         when confirm == "No, these details are not correct, I need to start again"
               puts "The program will now end, please restart it and try again"
@@ -224,7 +224,6 @@ puts "Your custom plan will download momentarily, it will contatin information s
 
 #This was just to I could show use of a class - EXAMPLE ONLY
 plan1 = Fitplan.new("weight loss plan", "Day 1" "Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 3 - Meal 1, Snack, Meal 2, Snack, Meal 3 "  "Day 2 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 4 - Meal 1, Snack, Meal 2, Snack, Meal 3" "Day 5 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 6 - Meal 1, Snack, Meal 2, Snack, Meal 3 " "Day 7 - Meal 1, Snack, Meal 2, Snack, Meal 3 ", "Ingredient, Ingredient, Ingredient", "Day 1 - Exercise 1")
-
 
 
 puts ""

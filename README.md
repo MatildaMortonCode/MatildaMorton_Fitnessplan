@@ -29,29 +29,30 @@ Step 1 - User is provided a selection on what they are hoping to acheive as an o
 
 ![](docs/app1.png)
 
-(SHOW PICTURE HERE)
-
 
 Step 2 - User is then provided with information about BMI and is asked to select thier Gender and input thier height and weight. Once entered user is provided with a meaage to let them know what thier BMI is and what this means. e.g overweight, within healthy or underweight. If does not put in correct details into the gets, errors are handled here and it requests the user to attempt the input again. 
 
-(SHOW PICTURE HERE)
+
+![](docs/appbmi.png)
 
 
 Step 3 - Users are then prompted to input thier current fitness level using a menu selection and using up and down arrows and enter key to submit. 
 
-(SHOW PICTURE HERE)
 
+![](docs/appfit.png)
 
 Step 4 - Users are then provided with a final statement based on the details they have previously provided. "The final outcome of your selection is that you want to Build Muscle, your current BMI is 26.6 You said your fitness level is low. Are these selections correct?" The user has the option to confirm these details before thier final sheet is downloaded. If they select No, thse details are not correct, the program closes and needs to be re-run and this is explained to the user. 
 
-(SHOW PICTURE HERE)
+![](docs/appconfirm.png)
 
 
-STEP 5 - Once the usekr has confirmed thier final outcome, they are provided with a final message that will let them know thier plan is being downloaded and the sheet will download. 
+STEP 5 - Once the user has confirmed thier final outcome, they are provided with a final message that will let them know thier plan is being downloaded and the sheet will download. 
 
-(SHOW PICTURE HERE)
+![](docs/appconfirm.png)
 
 STEP 6 - Program will say goodbye and end the program.
+
+![](docs/appfinal.png)
 
 
 # Feature Diagram
@@ -73,13 +74,22 @@ Develop an implementation plan which: - Please refer to Trello Board link for th
 - prioritise the implementation of different features, or checklist items within a feature
 - provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
 
+![](docs/Trello_1.png)
 
-(TRELLO BOARD PICTURES HERE)
+![](docs/Trello_2.png)
+
+![](docs/Trello_3.png)
+
+![](docs/Trello_14dec.png)
+
+![](docs/Trello_16thdec.png)
+
+![](docs/Trello_16thdecPM.png)
 
 
 
 # Help
-Install VS code - 
+Install VS code
 Install Ruby
 
 
