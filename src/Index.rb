@@ -1,11 +1,9 @@
 require "colorize" #colours text
 require "fileutils" #supports picture download at end
-require "mail" #Supports email to send with attachment
 require "tty-prompt" #currently used for list selection
 require "tty-progressbar"
 require "down" #Supports picture download at end
 require_relative "artmessages.rb" 
-require_relative "mail.rb"
 require_relative "fitplan.rb"
 require_relative "final.rb"
 require_relative "fitlevelnum.rb"
@@ -95,9 +93,11 @@ end
 b = 0
 while b == 0
 begin
+puts""
 print "Enter you height (Centremeters): "
 height = gets.to_f
 
+puts ""
 print "Enter you weight (Kilograms): "
 kegs = gets.to_f
 
@@ -122,35 +122,35 @@ if yourbmi <=13
         puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again"
 
 elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "1"
-puts "Your BMI is #{yourbmi}\n"
+puts "Your BMI is #{yourbmi}, for a female this means your are currently already underweight\n"
 b = 1
 
 elsif yourbmi >= 18.6 && yourbmi <25 && gen == "1"
-puts "Your BMI is #{yourbmi}\n"
+puts "Your BMI is #{yourbmi}, for a female this is a healthy weight\n"
 b = 2
 
 elsif yourbmi >= 25 && yourbmi <30 && gen == "1"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a female this is overweight\n"
 b = 3
 
 elsif yourbmi >= 30 && gen == "1"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a female this is classified as obese\n"
 b = 4
 
 elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "2"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a male this means you are currently already underweight\n"
 b = 5
 
 elsif yourbmi >= 18.5 && yourbmi <= 25 && gen == "2"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a male this means you are at a healthy weight\n"
 b = 6
 
 elsif yourbmi >= 25 && yourbmi <= 29.9 && gen == "2"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a male this means you are at currently classified as overweight\n"
 b = 7
 
 elsif yourbmi >= 30 && gen == "2"
-print "Your BMI is #{yourbmi}\n"
+print "Your BMI is #{yourbmi}, for a male this means you are classified as obese or morbidly obese\n"
 b = 8
 
 else
@@ -161,7 +161,6 @@ end
 
 sleep (5)
 
-system "clear"
 
 #ASCII title -refer to artmessages.rb
 fittitle

@@ -27,6 +27,8 @@ An end user will be able to load the program with the assumption that they have 
 Step 1 - User is provided a selection on what they are hoping to acheive as an outcome of the program. This is a menu navigation with instrucitons to use th up and down arrow key.
 
 
+![](docs/app1.png)
+
 (SHOW PICTURE HERE)
 
 
