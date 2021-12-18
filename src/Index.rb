@@ -111,7 +111,7 @@ yourbmi = yourbmi.to_i
 
 
 rescue StandardError => e
-        puts "Your height and weight seem to equal a negative number, this would mean you are not alive! Please enter your details again. Remember it is in cm and kg\n"
+        puts "Your have either entered a value other than a number or your numbers are too low for be a real BMI. Please enter your details again. Remember it is in cm and kg\n"
         retry
 next
 end   
@@ -119,7 +119,7 @@ end
 #Combines the options from BMI calculation and gender option to produce a end key that represents both. Used later in fitlevelnum.rb
         
 if yourbmi <=13
-        puts "Your BMI has calculates as #{yourbmi}, this is too low, it should be above 13 or you should seek medical attention, please check your numbers and try again\n"
+        puts "Your BMI has calculates as #{yourbmi}, this is too low or you have entered a value other than a standard number. Please check what you are inputting is correct and try again\n"
 
 elsif yourbmi >= 13.1 && yourbmi <= 18.5 && gen == "1"
 puts "Your BMI is #{yourbmi}, for a female this means your are currently already underweight\n"
@@ -133,7 +133,7 @@ elsif yourbmi >= 25 && yourbmi <30 && gen == "1"
 print "Your BMI is #{yourbmi}, for a female this is overweight\n"
 b = 3
 
-elsif yourbmi >= 30 && gen == "1"
+elsif yourbmi >= 30 && yourbmi <=205 && gen == "1"
 print "Your BMI is #{yourbmi}, for a female this is classified as obese\n"
 b = 4
 
@@ -149,9 +149,12 @@ elsif yourbmi >= 25 && yourbmi <= 29.9 && gen == "2"
 print "Your BMI is #{yourbmi}, for a male this means you are at currently classified as overweight\n"
 b = 7
 
-elsif yourbmi >= 30 && gen == "2"
+elsif yourbmi >= 30 && yourbmi <=205 && gen == "2"
 print "Your BMI is #{yourbmi}, for a male this means you are classified as obese or morbidly obese\n"
 b = 8
+
+elsif yourbmi >= 205.1 && gen == "2" or gen == "1"
+        print "You have entered a number higher that the largest person recorded. Unless you are setting a world record, please try again."
 
 else
     puts "There seems to be an error with the informaiton you have provided, please enter this again and ensure you only add numbers to the input section.\n"

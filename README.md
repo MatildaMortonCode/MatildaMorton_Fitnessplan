@@ -1,5 +1,8 @@
 # MatildaMorton_Fitnessplan
 
+# Github Repo
+https://github.com/MatildaMortonCode/MatildaMorton_Fitnessplan 
+
 # Purpose
 BodyFit is a application that supports people to achieve thier health and fitness goals by providing customised plans that take into consideration thier goals, whether that be to loose weight, gain muscle or increase energy. It also considers thier current Body Mass Index, thier gender and thier current fitness levels. This application support a user inputting thier details and provides a fully customised plan based on thier input.
 
@@ -20,9 +23,6 @@ The target audience for this application is both female and male users, in the y
 
 # User interaction
 An end user will be able to load the program with the assumption that they have standard required technical tools and interact with it step by step. A user can then follow clearly the prpmpts to enter thier details and they will be given a final report designed just for them.
-
-
-# what is the assessor looking for here?
 
 Step 1 - User is provided a selection on what they are hoping to acheive as an outcome of the program. This is a menu navigation with instrucitons to use th up and down arrow key.
 
@@ -104,11 +104,11 @@ Please note this guide only outlines instructions specific for Windows and MAC, 
      - To go back a folder type 'cd ..' into your command line
 
 
-     5. Once in the correct folder path copy the below line into your command prompt or termal and press enter, this will run the application. 
+5. Once in the correct folder path copy the below line into your command prompt or termal and press enter, this will run the application. 
 
      ./run.sh
 
-     6. If at any point you close the application, simply redo step 5. 
+6. If at any point you close the application, simply redo step 5. 
 
-     7. Use of this application is self explainitory in nature and it will step you thought each step. At the end, it will download a picture image of your final goal based on your selections within the application. This will download to the folder called 'SRC' within the MatildaMorton_T1A3 folder. If you cannot find this, use your search function and search either 'energy' or 'build-muscle-plan' or 'loose-weight'. This will be depending on which goal you initailly selected. 
+7. Use of this application is self explainitory in nature and it will step you thought each step. At the end, it will download a picture image of your final goal based on your selections within the application. This will download to the folder called 'SRC' within the MatildaMorton_T1A3 folder. If you cannot find this, use your search function and search either 'energy' or 'build-muscle-plan' or 'loose-weight'. This will be depending on which goal you initailly selected. 
 
