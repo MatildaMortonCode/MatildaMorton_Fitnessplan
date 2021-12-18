@@ -85,9 +85,18 @@ Develop an implementation plan which: - Please refer to Trello Board link for th
 
 
 # Help
-Install VS code
+Install VS code if you want to manipulate the current features - https://code.visualstudio.com/download 
 Install Ruby - https://www.ruby-lang.org/en/documentation/installation/ 
 
+If you are 
+
+
+
+Open your command prompt application either directly on your device or open Terminal through Visual Studio Code
+
+https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955 
+
+Navigate to the root folder MatildaMorton_T1A3
 
 Design help documentation which includes a set of instructions which accurately describe how to use and install the application.
 
