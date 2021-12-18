@@ -56,9 +56,7 @@ STEP 6 - Program will say goodbye and end the program.
 
 
 # Feature Diagram
-Develop a diagram which describes the control flow of your application. Your diagram must:
-- show the workflow/logic and/or integration of the features in your application for each feature.
-- utilise a recognised format or set of conventions for a control flow diagram, such as UML.
+![](docs/Flowchart.jpeg)
 
 
 # Error handling
@@ -78,8 +76,6 @@ Develop an implementation plan which: - Please refer to Trello Board link for th
 
 ![](docs/Trello_2.png)
 
-![](docs/Trello_3.png)
-
 ![](docs/Trello_14dec.png)
 
 ![](docs/Trello_16thdec.png)
@@ -90,7 +86,7 @@ Develop an implementation plan which: - Please refer to Trello Board link for th
 
 # Help
 Install VS code
-Install Ruby
+Install Ruby - https://www.ruby-lang.org/en/documentation/installation/ 
 
 
 Design help documentation which includes a set of instructions which accurately describe how to use and install the application.
