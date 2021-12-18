@@ -85,23 +85,30 @@ Develop an implementation plan which: - Please refer to Trello Board link for th
 
 
 # Help
-Install VS code if you want to manipulate the current features - https://code.visualstudio.com/download 
-Install Ruby - https://www.ruby-lang.org/en/documentation/installation/ 
 
-If you are 
+Please note this guide only outlines instructions specific for Windows and MAC, if you are running an alternative operating system, most of this guide will apply however you will need to research specific steps. This application must be run on a laptop or or desktop device with a monitor. You must be running a standard operating system such as Windows, MacOS or Linux. This application cannot be run on a mobile or tablet device unless you have a terminal emulator installed. 
+
+1. Install VS code if you want to manipulate the current features (Otherwise, skip this step) 
+    - Instructions to download VS code can be found here https://code.visualstudio.com/download 
+
+2. Install Ruby - https://www.ruby-lang.org/en/documentation/installation/ 
+
+3. Open your command prompt or open Terminal through VS Code
+    - Instructions on how to open command prompt   - https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955 
+    - Open Terminal VS Code for MAC- >open VS code>Terminal>New Terminal 
+    - Open Terminal VS Code for Window - Open VS code>View>Integrated Terminal
 
 
+4. Navigate to the folder MatildaMorton_T1A3 through your command line
+    - To go into a folder type 'cd folderpath' then press enter - for example cd /user/folder/MatildaMorton_T1A3
+     - To go back a folder type 'cd ..' into your command line
 
-Open your command prompt application either directly on your device or open Terminal through Visual Studio Code
 
-https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955 
+     5. Once in the correct folder path copy the below line into your command prompt or termal and press enter, this will run the application. 
 
-Navigate to the root folder MatildaMorton_T1A3
+     ./run.sh
 
-Design help documentation which includes a set of instructions which accurately describe how to use and install the application.
+     6. If at any point you close the application, simply redo step 5. 
 
-You must include:
-- steps to install the application
-- any dependencies required by the application to operate
-- any system/hardware requirements
+     7. Use of this application is self explainitory in nature and it will step you thought each step. At the end, it will download a picture image of your final goal based on your selections within the application. This will download to the folder called 'SRC' within the MatildaMorton_T1A3 folder. If you cannot find this, use your search function and search either 'energy' or 'build-muscle-plan' or 'loose-weight'. This will be depending on which goal you initailly selected. 
 
